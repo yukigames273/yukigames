@@ -6,16 +6,20 @@
   <title>Yukiki Games - Free Downloads</title>
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
-  <!-- Font Awesome cho icon kính lúp -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body oncontextmenu="return false;">
 
   <header class="header">
     <div class="logo">Yukiki Games</div>
-    <div class="search-container">
-      <i class="fas fa-search search-icon"></i>
-      <input type="text" id="searchInput" placeholder="Search games (e.g., Kingdom, Survival...)" onkeyup="filterGames()"/>
+    <div class="search-wrapper">
+      <div class="search-toggle" onclick="toggleSearch()">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="search-container" id="searchContainer">
+        <input type="text" id="searchInput" placeholder="Search games..." onkeyup="filterGames()"/>
+        <i class="fas fa-times close-icon" onclick="toggleSearch()"></i>
+      </div>
     </div>
   </header>
 
@@ -56,8 +60,6 @@
           <a href="https://mega.nz/file/example" class="download-btn">Download Now</a>
         </div>
       </div>
-
-      <!-- Thêm game mới thì copy khối .game-card vào .game-grid -->
     </div>
   </div>
 
@@ -84,6 +86,16 @@
       slides[current].classList.add('active');
       slider.dataset.current = current;
     }
+
+    function toggleSearch() {
+      document.getElementById('searchContainer').classList.toggle('active');
+    }
+
+    document.addEventListener('click', function(e) {
+      if (!document.querySelector('.search-wrapper').contains(e.target)) {
+        document.getElementById('searchContainer').classList.remove('active');
+      }
+    });
 
     document.addEventListener('copy', e => e.preventDefault());
     document.addEventListener('contextmenu', e => e.preventDefault());
