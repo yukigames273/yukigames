@@ -11,12 +11,16 @@
 </head>
 <body oncontextmenu="return false;">
 
-  <!-- Header với tên và thanh tìm kiếm -->
   <header class="header">
-    <h1 class="logo">Yukiki Games</h1>
-    <div class="search-container">
-      <i class="fas fa-search search-icon"></i>
-      <input type="text" id="searchInput" placeholder="Search games (e.g., Kingdom, Survival...)" onkeyup="filterGames()"/>
+    <div class="logo">Yukiki Games</div>
+    <div class="search-wrapper">
+      <div class="search-toggle" onclick="toggleSearch()">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="search-container" id="searchContainer">
+        <input type="text" id="searchInput" placeholder="Search games (e.g., Kingdom, Survival...)" onkeyup="filterGames()"/>
+        <i class="fas fa-times close-icon" onclick="toggleSearch()"></i>
+      </div>
     </div>
   </header>
 
@@ -81,6 +85,19 @@
       slides[current].classList.add('active');
       slider.dataset.current = current;
     }
+
+    function toggleSearch() {
+      const container = document.getElementById('searchContainer');
+      container.classList.toggle('active');
+    }
+
+    // Đóng search khi nhấn ngoài vùng
+    document.addEventListener('click', function(e) {
+      const wrapper = document.querySelector('.search-wrapper');
+      if (!wrapper.contains(e.target)) {
+        document.getElementById('searchContainer').classList.remove('active');
+      }
+    });
 
     document.addEventListener('copy', e => e.preventDefault());
     document.addEventListener('contextmenu', e => e.preventDefault());
