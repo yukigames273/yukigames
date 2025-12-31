@@ -110,20 +110,20 @@ body {
 
 .slider {
   position: relative;
-  height: 260px;
+  height: 220px; /* Nhỏ lại ảnh slider */
   background: #000;
 }
 
 .slide {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* Ảnh fit vừa khung, nhỏ hơn */
   position: absolute;
   top: 0; left: 0;
   opacity: 0;
   transition: opacity 0.6s;
   display: none;
-  cursor: pointer; /* Để biết click được */
+  cursor: pointer;
 }
 
 .slide.active {
@@ -138,10 +138,10 @@ body {
   background: rgba(0,0,0,0.7);
   color: white;
   border: none;
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  font-size: 24px;
+  font-size: 22px;
   cursor: pointer;
   z-index: 10;
 }
@@ -150,19 +150,19 @@ body {
 .next { right: 10px; }
 
 .game-info {
-  padding: 25px;
+  padding: 20px;
   text-align: center;
 }
 
 h2 {
-  font-size: 1.7rem;
-  margin-bottom: 15px;
+  font-size: 1.6rem;
+  margin-bottom: 12px;
   color: #fff;
 }
 
 .version, .size, .update {
-  font-size: 0.95rem;
-  margin: 8px 0;
+  font-size: 0.9rem;
+  margin: 6px 0;
 }
 
 .version { color: #00d4ff; font-weight: bold; }
@@ -173,12 +173,12 @@ h2 {
   display: inline-block;
   background: linear-gradient(135deg, #0099cc, #00d4ff);
   color: white !important;
-  padding: 14px 40px;
+  padding: 12px 35px;
   border-radius: 50px;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1.1rem;
-  margin-top: 20px;
+  font-size: 1rem;
+  margin-top: 15px;
   transition: all 0.3s;
 }
 
@@ -191,17 +191,18 @@ h2 {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.95);
   z-index: 9999;
   align-items: center;
   justify-content: center;
 }
 
 .modal-content {
-  max-width: 90%;
-  max-height: 90vh;
+  max-width: 95%;
+  max-height: 95vh;
   object-fit: contain;
   border-radius: 10px;
+  cursor: zoom-in;
 }
 
 .close-modal {
@@ -212,6 +213,7 @@ h2 {
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
+  z-index: 10000;
 }
 
 footer {
