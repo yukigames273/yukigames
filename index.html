@@ -11,7 +11,7 @@
 <body oncontextmenu="return false;">
 
   <header class="header">
-    <div class="logo">Yukiki Games</div>
+    <div class="logo">Yuki Games</div>
     <div class="search-wrapper">
       <div class="search-toggle" onclick="toggleSearch()">
         <i class="fas fa-search"></i>
@@ -24,40 +24,25 @@
   </header>
 
   <div class="container">
-    <div class="game-grid">
-      <div class="game-card">
-        <div class="slider" data-current="0">
-          <img src="https://files.catbox.moe/d2hpwn.jpg" alt="Screen 1" class="slide active" onclick="openModal(this.src)"/>
-          <img src="https://via.placeholder.com/500x300/222/000/000" alt="Screen 2" class="slide" onclick="openModal(this.src)"/>
-          <img src="https://via.placeholder.com/500x300/333/000/000" alt="Screen 3" class="slide" onclick="openModal(this.src)"/>
-          <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
-          <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
-        </div>
-        <div class="game-info">
-          <h2>Kingdom Strategy</h2>
-          <p class="version">Version: v2.1.0</p>
-          <p class="size">Size: 480.0 MB</p>
-          <p class="update">Last Updated: December 26, 2025</p>
-          <a href="https://your-link.apk" class="download-btn">Download Now</a>
-        </div>
-      </div>
+   <!-- Game Card 1 -->
+    <div class="game-card">
+      <div class="slider" data-current="0">
+        <img src="https://files.catbox.moe/f2666p.avif" alt="Screen 1" class="slide active">
+        <img src="https://files.catbox.moe/oshwr7.avif" alt="Screen 2" class="slide">
+        <img src="https://files.catbox.moe/7j5a6e.jpg" alt="Screen 3" class="slide">
+        <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
+        <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
+      </div>
+      <div class="game-info">
+        <h2>Tunnel Escape</h2>
+        <p class="version">Version: v1.1.0sn</p>
+        <p class="size">Size: 1.48 GB</p>
+        <p class="update">Last Updated: December 30, 2025</p>
+        <a href="https://ouo.io/9OOVo5" class="download-btn">DOWNLOAD NOW</a>
+      </div>
+    </div>
 
-      <div class="game-card">
-        <div class="slider" data-current="0">
-          <img src="https://via.placeholder.com/500x300/444/000/000" alt="Screen 1" class="slide active" onclick="openModal(this.src)"/>
-          <img src="https://via.placeholder.com/500x300/555/000/000" alt="Screen 2" class="slide" onclick="openModal(this.src)"/>
-          <img src="https://via.placeholder.com/500x300/666/000/000" alt="Screen 3" class="slide" onclick="openModal(this.src)"/>
-          <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
-          <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
-        </div>
-        <div class="game-info">
-          <h2>Offline Survival Shooter</h2>
-          <p class="version">Version: v1.8.5</p>
-          <p class="size">Size: 320.5 MB</p>
-          <p class="update">Last Updated: December 25, 2025</p>
-          <a href="https://mega.nz/file/example" class="download-btn">Download Now</a>
-        </div>
-      </div>
+     
     </div>
   </div>
 
