@@ -86,7 +86,7 @@ body {
   margin: 0 auto;
 }
 
-/* Grid: 2 card mỗi dòng (responsive) */
+/* Grid: 2 card mỗi dòng (nằm ngang, responsive) */
 .game-grid {
   display: grid;
   grid-template-columns: 1fr; /* 1 cột trên mobile */
