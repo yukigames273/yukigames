@@ -17,6 +17,7 @@
         <i class="fas fa-search"></i>
       </div>
       <div class="search-container" id="searchContainer">
+        <i class="fas fa-search search-icon-inside"></i>
         <input type="text" id="searchInput" placeholder="Search games..." onkeyup="filterGames()"/>
         <i class="fas fa-times close-icon" onclick="toggleSearch()"></i>
       </div>
@@ -25,12 +26,11 @@
 
   <div class="container">
     <div class="game-grid">
-      <!-- Game Card 1 -->
       <div class="game-card">
         <div class="slider" data-current="0">
-          <img src="https://via.placeholder.com/500x300/111/000/fff" alt="Screen 1" class="slide active"/>
-          <img src="https://via.placeholder.com/500x300/222/000/fff" alt="Screen 2" class="slide"/>
-          <img src="https://via.placeholder.com/500x300/333/000/fff" alt="Screen 3" class="slide"/>
+          <img src="https://via.placeholder.com/500x300/111/000/000" alt="Screen 1" class="slide active"/>
+          <img src="https://via.placeholder.com/500x300/222/000/000" alt="Screen 2" class="slide"/>
+          <img src="https://via.placeholder.com/500x300/333/000/000" alt="Screen 3" class="slide"/>
           <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
           <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
         </div>
@@ -43,12 +43,11 @@
         </div>
       </div>
 
-      <!-- Game Card 2 -->
       <div class="game-card">
         <div class="slider" data-current="0">
-          <img src="https://via.placeholder.com/500x300/444/000/fff" alt="Screen 1" class="slide active"/>
-          <img src="https://via.placeholder.com/500x300/555/000/fff" alt="Screen 2" class="slide"/>
-          <img src="https://via.placeholder.com/500x300/666/000/fff" alt="Screen 3" class="slide"/>
+          <img src="https://via.placeholder.com/500x300/444/000/000" alt="Screen 1" class="slide active"/>
+          <img src="https://via.placeholder.com/500x300/555/000/000" alt="Screen 2" class="slide"/>
+          <img src="https://via.placeholder.com/500x300/666/000/000" alt="Screen 3" class="slide"/>
           <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
           <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
         </div>
