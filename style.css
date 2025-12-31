@@ -27,16 +27,38 @@ body {
   color: #00d4ff;
 }
 
+.search-wrapper {
+  position: relative;
+}
+
+.search-toggle {
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: #00d4ff;
+  padding: 8px;
+}
+
 .search-container {
-  display: flex;
-  align-items: center;
-  width: 60%;
-  max-width: 400px;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 0;
+  max-width: 85vw;
+  overflow: hidden;
+  transition: width 0.4s ease, opacity 0.4s ease;
   background: #2a2a4a;
   border-radius: 50px;
   box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+  display: flex;
+  align-items: center;
+  padding: 0;
+  opacity: 0;
+}
+
+.search-container.active {
+  width: 85vw;
   padding: 8px 15px;
-  transition: all 0.3s;
+  opacity: 1;
 }
 
 .search-icon {
@@ -54,8 +76,11 @@ body {
   outline: none;
 }
 
-#searchInput:focus {
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+.close-icon {
+  color: #bbb;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 10px;
 }
 
 .container {
@@ -64,7 +89,6 @@ body {
   margin: 0 auto;
 }
 
-/* Grid 2 card/dòng */
 .game-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -82,11 +106,6 @@ body {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-  transition: transform 0.3s;
-}
-
-.game-card:hover {
-  transform: translateY(-8px);
 }
 
 .slider {
@@ -138,14 +157,11 @@ h2 {
   font-size: 1.7rem;
   margin-bottom: 15px;
   color: #fff;
-  line-height: 1.2;
-  word-break: break-word;
 }
 
 .version, .size, .update {
   font-size: 0.95rem;
   margin: 8px 0;
-  line-height: 1.4;
 }
 
 .version { color: #00d4ff; font-weight: bold; }
@@ -167,7 +183,6 @@ h2 {
 
 .download-btn:hover {
   transform: scale(1.05);
-  background: linear-gradient(135deg, #00b0ff, #00e0ff);
 }
 
 footer {
