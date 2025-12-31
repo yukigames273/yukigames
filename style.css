@@ -41,22 +41,24 @@ body {
 
 .search-container {
   position: absolute;
-  right: 10px; /* Fix tràn: right cách lề 10px */
+  right: 5%; /* Fix tràn: cách lề phải 5% */
   top: 100%;
   width: 0;
-  max-width: calc(100% - 40px); /* Giới hạn max width 100% trừ lề */
+  max-width: 90%; /* Giới hạn max 90% màn hình */
   overflow: hidden;
-  transition: width 0.4s ease;
+  transition: width 0.4s ease, opacity 0.4s ease;
   background: #2a2a4a;
   border-radius: 50px;
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
   display: flex;
   align-items: center;
   padding: 0 15px;
+  opacity: 0;
 }
 
 .search-container.active {
-  width: calc(100% - 40px); /* Mở rộng vừa màn hình, không tràn */
+  width: 90%;
+  opacity: 1;
   padding: 8px 15px;
 }
 
@@ -88,7 +90,7 @@ body {
   margin: 0 auto;
 }
 
-/* Grid: 2 card mỗi dòng (nằm ngang) */
+/* Grid: 2 card mỗi dòng */
 .game-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -190,4 +192,14 @@ h2 {
 }
 
 .download-btn:hover {
-  transform: scale(1.05
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #00b0ff, #00e0ff);
+}
+
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: #777;
+  font-size: 0.9rem;
+  border-top: 1px solid #222;
+}
