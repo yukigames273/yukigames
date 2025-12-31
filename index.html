@@ -3,56 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Download H game</title>
+  <title>Yukiki Games - Free Downloads</title>
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <!-- Font Awesome cho icon kính lúp -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body oncontextmenu="return false;">
 
+  <!-- Header với tên và thanh tìm kiếm -->
+  <header class="header">
+    <div class="logo">Yukiki Games</div>
+    <div class="search-container">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" id="searchInput" placeholder="Search games (e.g., Kingdom, Survival...)" onkeyup="filterGames()"/>
+    </div>
+  </header>
+
   <div class="container">
-    <!-- Avatar + Tên + Bio với viền Discord đơn giản -->
-    <div class="profile-header">
-      <div class="avatar-container">
-        <img src="https://files.catbox.moe/exi6md.jpg" alt="Avatar" class="avatar"/>
-      </div>
-      <div class="profile-text">
-        <h1 class="username">Yuki games</h1>
-        <p class="bio">If the link is broken, please let me know so I can fix it ❤️</p>
-      </div>
-    </div>
-
-    <!-- Thanh tìm kiếm game -->
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="search game" onkeyup="filterGames()">
-    </div>
-
     <!-- Game Card 1 -->
-    <div class="game-card">
-      <div class="slider" data-current="0">
-        <img src="https://files.catbox.moe/f2666p.avif" alt="Screen 1" class="slide active">
-        <img src="https://files.catbox.moe/oshwr7.avif" alt="Screen 2" class="slide">
-        <img src="https://files.catbox.moe/7j5a6e.jpg" alt="Screen 3" class="slide">
-        <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
-        <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
-      </div>
-      <div class="game-info">
-        <h2>Tunnel Escape Android Apk</h2>
-        <p class="version">Version: v1.1.0sn</p>
-        <p class="size">Size: 1.48 GB</p>
-        <p class="update">Last Updated: December 30, 2025</p>
-        <a href="https://ouo.io/9OOVo5" class="download-btn">DOWNLOAD NOW</a>
-      </div>
-    </div>
+    <div class="game-card">
+      <div class="slider" data-current="0">
+        <img src="https://via.placeholder.com/500x300/111/000/fff" alt="Screen 1" class="slide active"/>
+        <img src="https://via.placeholder.com/500x300/222/000/fff" alt="Screen 2" class="slide"/>
+        <img src="https://via.placeholder.com/500x300/333/000/fff" alt="Screen 3" class="slide"/>
+        <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
+        <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
+      </div>
+      <div class="game-info">
+        <h2>Kingdom Strategy</h2>
+        <p class="version">Version: v2.1.0</p>
+        <p class="size">Size: 480.0 MB</p>
+        <p class="update">Last Updated: December 26, 2025</p>
+        <a href="https://your-link.apk" class="download-btn">Download Now</a>
+      </div>
+    </div>
 
-    
+    <!-- Game Card 2 -->
+    <div class="game-card">
+      <div class="slider" data-current="0">
+        <img src="https://via.placeholder.com/500x300/444/000/fff" alt="Screen 1" class="slide active"/>
+        <img src="https://via.placeholder.com/500x300/555/000/fff" alt="Screen 2" class="slide"/>
+        <img src="https://via.placeholder.com/500x300/666/000/fff" alt="Screen 3" class="slide"/>
+        <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
+        <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
+      </div>
+      <div class="game-info">
+        <h2>Offline Survival Shooter</h2>
+        <p class="version">Version: v1.8.5</p>
+        <p class="size">Size: 320.5 MB</p>
+        <p class="update">Last Updated: December 25, 2025</p>
+        <a href="https://mega.nz/file/example" class="download-btn">Download Now</a>
+      </div>
+    </div>
   </div>
 
   <footer>
-    <p>© 2025 Yuki Games - All rights reserved</p>
+    <p>© 2025 Yukiki Games - All rights reserved</p>
   </footer>
 
   <script>
-    // Script chính đầy đủ
     function filterGames() {
       const input = document.getElementById('searchInput').value.toLowerCase();
       const cards = document.querySelectorAll('.game-card');
@@ -72,13 +82,8 @@
       slider.dataset.current = current;
     }
 
-    document.addEventListener('copy', function(e) {
-      e.preventDefault();
-    });
-
-    document.addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-    });
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('contextmenu', e => e.preventDefault());
   </script>
 </body>
 </html>
