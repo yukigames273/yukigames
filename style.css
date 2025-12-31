@@ -54,7 +54,7 @@ body {
 }
 
 .search-container.active {
-  width: 280px; /* Gọn, không dài quá */
+  width: 280px;
   padding: 8px 15px;
 }
 
@@ -82,16 +82,33 @@ body {
 
 .container {
   padding: 20px 15px;
-  max-width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Game Card */
+/* Grid: 2 card mỗi dòng (responsive) */
+.game-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 cột trên mobile */
+  gap: 25px;
+}
+
+@media (min-width: 768px) {
+  .game-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cột khi màn lớn */
+  }
+}
+
 .game-card {
   background: #16213e;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-  margin-bottom: 30px;
+  transition: transform 0.3s;
+}
+
+.game-card:hover {
+  transform: translateY(-8px);
 }
 
 .slider {
