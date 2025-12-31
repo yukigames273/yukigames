@@ -25,40 +25,44 @@
   </header>
 
   <div class="container">
-    <!-- Game Card 1 -->
-    <div class="game-card">
-      <div class="slider" data-current="0">
-        <img src="https://via.placeholder.com/500x300/111/000/fff" alt="Screen 1" class="slide active"/>
-        <img src="https://via.placeholder.com/500x300/222/000/fff" alt="Screen 2" class="slide"/>
-        <img src="https://via.placeholder.com/500x300/333/000/fff" alt="Screen 3" class="slide"/>
-        <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
-        <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
+    <div class="game-grid">
+      <!-- Game Card 1 -->
+      <div class="game-card">
+        <div class="slider" data-current="0">
+          <img src="https://via.placeholder.com/500x300/111/000/fff" alt="Screen 1" class="slide active"/>
+          <img src="https://via.placeholder.com/500x300/222/000/fff" alt="Screen 2" class="slide"/>
+          <img src="https://via.placeholder.com/500x300/333/000/fff" alt="Screen 3" class="slide"/>
+          <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
+          <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
+        </div>
+        <div class="game-info">
+          <h2>Kingdom Strategy</h2>
+          <p class="version">Version: v2.1.0</p>
+          <p class="size">Size: 480.0 MB</p>
+          <p class="update">Last Updated: December 26, 2025</p>
+          <a href="https://your-link.apk" class="download-btn">Download Now</a>
+        </div>
       </div>
-      <div class="game-info">
-        <h2>Kingdom Strategy</h2>
-        <p class="version">Version: v2.1.0</p>
-        <p class="size">Size: 480.0 MB</p>
-        <p class="update">Last Updated: December 26, 2025</p>
-        <a href="https://your-link.apk" class="download-btn">Download Now</a>
-      </div>
-    </div>
 
-    <!-- Game Card 2 -->
-    <div class="game-card">
-      <div class="slider" data-current="0">
-        <img src="https://via.placeholder.com/500x300/444/000/fff" alt="Screen 1" class="slide active"/>
-        <img src="https://via.placeholder.com/500x300/555/000/fff" alt="Screen 2" class="slide"/>
-        <img src="https://via.placeholder.com/500x300/666/000/fff" alt="Screen 3" class="slide"/>
-        <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
-        <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
+      <!-- Game Card 2 -->
+      <div class="game-card">
+        <div class="slider" data-current="0">
+          <img src="https://via.placeholder.com/500x300/444/000/fff" alt="Screen 1" class="slide active"/>
+          <img src="https://via.placeholder.com/500x300/555/000/fff" alt="Screen 2" class="slide"/>
+          <img src="https://via.placeholder.com/500x300/666/000/fff" alt="Screen 3" class="slide"/>
+          <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
+          <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
+        </div>
+        <div class="game-info">
+          <h2>Offline Survival Shooter</h2>
+          <p class="version">Version: v1.8.5</p>
+          <p class="size">Size: 320.5 MB</p>
+          <p class="update">Last Updated: December 25, 2025</p>
+          <a href="https://mega.nz/file/example" class="download-btn">Download Now</a>
+        </div>
       </div>
-      <div class="game-info">
-        <h2>Offline Survival Shooter</h2>
-        <p class="version">Version: v1.8.5</p>
-        <p class="size">Size: 320.5 MB</p>
-        <p class="update">Last Updated: December 25, 2025</p>
-        <a href="https://mega.nz/file/example" class="download-btn">Download Now</a>
-      </div>
+
+      <!-- Thêm game mới thì copy khối .game-card vào đây -->
     </div>
   </div>
 
@@ -91,7 +95,6 @@
       container.classList.toggle('active');
     }
 
-    // Đóng search khi nhấn ngoài vùng
     document.addEventListener('click', function(e) {
       const wrapper = document.querySelector('.search-wrapper');
       if (!wrapper.contains(e.target)) {
@@ -103,5 +106,4 @@
     document.addEventListener('contextmenu', e => e.preventDefault());
   </script>
 </body>
-</html></body>
 </html>
