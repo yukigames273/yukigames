@@ -27,7 +27,7 @@
     <div class="game-grid">
       <div class="game-card">
         <div class="slider" data-current="0">
-          <img src="https://files.catbox.moe/d2hpwn.jpg" alt="Screen 1" class="slide active" onclick="openModal(this.src)"/>
+          <img src="https://via.placeholder.com/500x300/111/000/000" alt="Screen 1" class="slide active" onclick="openModal(this.src)"/>
           <img src="https://via.placeholder.com/500x300/222/000/000" alt="Screen 2" class="slide" onclick="openModal(this.src)"/>
           <img src="https://via.placeholder.com/500x300/333/000/000" alt="Screen 3" class="slide" onclick="openModal(this.src)"/>
           <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
@@ -62,9 +62,9 @@
   </div>
 
   <!-- Modal xem ảnh lớn -->
-  <div id="imageModal" class="modal">
+  <div id="imageModal" class="modal" onclick="closeModal()">
     <span class="close-modal" onclick="closeModal()">×</span>
-    <img class="modal-content" id="modalImage">
+    <img class="modal-content" id="modalImage" onclick="event.stopPropagation()">
   </div>
 
   <footer>
@@ -111,7 +111,7 @@
       document.getElementById('imageModal').style.display = "none";
     }
 
-    // Chặn right-click trên ảnh
+    // Chặn right-click + drag trên ảnh
     document.querySelectorAll('img').forEach(img => {
       img.addEventListener('contextmenu', e => e.preventDefault());
       img.addEventListener('dragstart', e => e.preventDefault());
