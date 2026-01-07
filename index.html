@@ -20,42 +20,92 @@
 
   <div class="container">
     <div class="game-grid">
-      <div class="game-card">
+      <!-- Game 1: Kingdom Strategy - thêm badge New + link detail -->
+      <div class="game-card" onclick="window.location.href='game-detail.html?game=kingdom'">
         <div class="slider" data-current="0">
-          <img src="https://via.placeholder.com/500x220/000000/000000" alt="Screen 1" class="slide active" onclick="openModal(this.src)"/>
-          <img src="https://via.placeholder.com/500x220/111111/111111" alt="Screen 2" class="slide" onclick="openModal(this.src)"/>
-          <img src="https://via.placeholder.com/500x220/222222/222222" alt="Screen 3" class="slide" onclick="openModal(this.src)"/>
-          <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
-          <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
+          <img src="https://via.placeholder.com/500x220/000000/000000" alt="Screen 1" class="slide active" onclick="openModal(this.src); event.stopPropagation();"/>
+          <img src="https://via.placeholder.com/500x220/111111/111111" alt="Screen 2" class="slide" onclick="openModal(this.src); event.stopPropagation();"/>
+          <img src="https://via.placeholder.com/500x220/222222/222222" alt="Screen 3" class="slide" onclick="openModal(this.src); event.stopPropagation();"/>
+          <button class="prev" onclick="changeSlide(this.parentElement, -1); event.stopPropagation();">‹</button>
+          <button class="next" onclick="changeSlide(this.parentElement, 1); event.stopPropagation();">›</button>
         </div>
         <div class="game-info">
           <h2>Kingdom Strategy</h2>
+          <span class="badge new">New</span> <!-- Badge New -->
           <p class="version">Version: v2.1.0</p>
           <p class="size">Size: 480.0 MB</p>
           <p class="update">Last Updated: December 26, 2025</p>
-          <a href="https://your-link.apk" class="download-btn">Download Now</a>
+          <a href="https://your-link.apk" class="download-btn" onclick="event.stopPropagation();">Download Now</a>
         </div>
       </div>
 
-      <div class="game-card">
+      <!-- Game 2: Offline Survival Shooter - thêm badge Hot + link detail -->
+      <div class="game-card" onclick="window.location.href='game-detail.html?game=survival'">
         <div class="slider" data-current="0">
-          <img src="https://via.placeholder.com/500x220/333333/333333" alt="Screen 1" class="slide active" onclick="openModal(this.src)"/>
-          <img src="https://via.placeholder.com/500x220/444444/444444" alt="Screen 2" class="slide" onclick="openModal(this.src)"/>
-          <img src="https://via.placeholder.com/500x220/555555/555555" alt="Screen 3" class="slide" onclick="openModal(this.src)"/>
-          <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
-          <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
+          <img src="https://via.placeholder.com/500x220/333333/333333" alt="Screen 1" class="slide active" onclick="openModal(this.src); event.stopPropagation();"/>
+          <img src="https://via.placeholder.com/500x220/444444/444444" alt="Screen 2" class="slide" onclick="openModal(this.src); event.stopPropagation();"/>
+          <img src="https://via.placeholder.com/500x220/555555/555555" alt="Screen 3" class="slide" onclick="openModal(this.src); event.stopPropagation();"/>
+          <button class="prev" onclick="changeSlide(this.parentElement, -1); event.stopPropagation();">‹</button>
+          <button class="next" onclick="changeSlide(this.parentElement, 1); event.stopPropagation();">›</button>
         </div>
         <div class="game-info">
           <h2>Offline Survival Shooter</h2>
+          <span class="badge hot">Hot</span> <!-- Badge Hot -->
           <p class="version">Version: v1.8.5</p>
           <p class="size">Size: 320.5 MB</p>
           <p class="update">Last Updated: December 25, 2025</p>
-          <a href="https://mega.nz/file/example" class="download-btn">Download Now</a>
+          <a href="https://mega.nz/file/example" class="download-btn" onclick="event.stopPropagation();">Download Now</a>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Modal xem ảnh lớn -->
   <div id="imageModal" class="modal" onclick="closeModal()">
     <span class="close-modal" onclick="closeModal()">×</span>
     <img class="modal-content" id="modalImage" onclick="event.stopPropagation()">
+  </div>
+
+  <footer>
+    <p>© 2025 Yukiki Games - All rights reserved</p>
+  </footer>
+
+  <script>
+    function filterGames() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.game-card');
+      cards.forEach(card => {
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        card.style.display = title.includes(input) ? 'block' : 'none';
+      });
+    }
+
+    function changeSlide(slider, dir) {
+      const slides = slider.querySelectorAll('.slide');
+      let current = parseInt(slider.dataset.current || 0);
+      slides[current].classList.remove('active');
+      current = (current + dir + slides.length) % slides.length;
+      if (current < 0) current += slides.length;
+      slides[current].classList.add('active');
+      slider.dataset.current = current;
+    }
+
+    function openModal(src) {
+      document.getElementById('modalImage').src = src;
+      document.getElementById('imageModal').style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = "none";
+    }
+
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('contextmenu', e => e.preventDefault());
+      img.addEventListener('dragstart', e => e.preventDefault());
+    });
+
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('contextmenu', e => e.preventDefault());
+  </script>
+</body>
+</html>
