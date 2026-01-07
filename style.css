@@ -88,6 +88,7 @@ body {
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
   transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
 }
 
 .game-card:hover {
@@ -115,6 +116,39 @@ body {
 .slide.active {
   opacity: 1;
   display: block;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 20;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.6);
+  transition: transform 0.2s;
+}
+
+.badge:hover {
+  transform: scale(1.1);
+}
+
+.badge.new {
+  background: linear-gradient(135deg, #ff3366, #ff6699);
+  color: white;
+}
+
+.badge.hot {
+  background: linear-gradient(135deg, #ff9800, #ffb300);
+  color: white;
+}
+
+.badge.updated {
+  background: linear-gradient(135deg, #4caf50, #66bb6a);
+  color: white;
 }
 
 .prev, .next {
@@ -145,50 +179,12 @@ body {
   text-align: center;
 }
 
-.title-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 12px;
-}
-
 h2 {
   font-size: 1.8rem;
-  margin: 0;
+  margin-bottom: 12px;
   color: #fff;
   line-height: 1.2;
   word-break: break-word;
-}
-
-.badge {
-  padding: 8px 18px;
-  border-radius: 30px;
-  font-size: 0.95rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.5);
-  transition: transform 0.2s;
-}
-
-.badge:hover {
-  transform: scale(1.1);
-}
-
-.badge.new {
-  background: linear-gradient(135deg, #ff3366, #ff6699);
-  color: white;
-}
-
-.badge.hot {
-  background: linear-gradient(135deg, #ff9800, #ffb300);
-  color: white;
-}
-
-.badge.updated {
-  background: linear-gradient(135deg, #4caf50, #66bb6a);
-  color: white;
 }
 
 .version, .size, .update {
@@ -257,30 +253,4 @@ footer {
   color: #777;
   font-size: 1rem;
   border-top: 1px solid #6a1b9a;
-}
-
-/* Responsive cho mobile */
-@media (max-width: 768px) {
-  .logo {
-    font-size: 1.4rem;
-  }
-
-  .search-container {
-    width: 70%;
-    padding: 8px 12px;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  .badge {
-    padding: 6px 14px;
-    font-size: 0.8rem;
-  }
-
-  .download-btn {
-    padding: 14px 40px;
-    font-size: 1rem;
-  }
 }
