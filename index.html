@@ -10,14 +10,6 @@
 </head>
 <body oncontextmenu="return false;">
 
-  <!-- Loading VIP -->
-  <div id="loading" class="loading">
-    <div class="vip-spinner">
-      <div class="inner-spinner"></div>
-    </div>
-    <p class="loading-text">Loading Yukiki Games...</p>
-  </div>
-
   <header class="header">
     <div class="logo">Yukiki Games</div>
     <div class="search-wrapper">
@@ -31,9 +23,9 @@
     </div>
   </header>
 
-  <div class="container" id="content" style="display: none;">
+  <div class="container">
     <div class="game-grid">
-      <!-- Game 1: Kingdom Strategy -->
+      <!-- Game 1 -->
       <div class="game-card">
         <div class="slider" data-current="0">
           <span class="badge new">NEW</span>
@@ -52,7 +44,7 @@
         </div>
       </div>
 
-      <!-- Game 2: Offline Survival Shooter -->
+      <!-- Game 2 -->
       <div class="game-card">
         <div class="slider" data-current="0">
           <span class="badge hot">HOT</span>
@@ -84,18 +76,6 @@
   </footer>
 
   <script>
-    // Loading VIP khi mở trang
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('loading').style.opacity = '0';
-        setTimeout(() => {
-          document.getElementById('loading').style.display = 'none';
-          document.getElementById('content').style.display = 'block';
-        }, 500);
-      }, 2500);
-    });
-
-    // Toggle search
     function toggleSearch() {
       document.getElementById('searchContainer').classList.toggle('active');
     }
@@ -107,23 +87,12 @@
     });
 
     function filterGames() {
-      document.getElementById('loading').style.display = 'flex';
-      document.getElementById('content').style.display = 'none';
-
-      setTimeout(() => {
-        const input = document.getElementById('searchInput').value.toLowerCase();
-        const cards = document.querySelectorAll('.game-card');
-        cards.forEach(card => {
-          const title = card.querySelector('h2').textContent.toLowerCase();
-          card.style.display = title.includes(input) ? 'block' : 'none';
-        });
-
-        document.getElementById('loading').style.opacity = '0';
-        setTimeout(() => {
-          document.getElementById('loading').style.display = 'none';
-          document.getElementById('content').style.display = 'block';
-        }, 500);
-      }, 300);
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.game-card');
+      cards.forEach(card => {
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        card.style.display = title.includes(input) ? 'block' : 'none';
+      });
     }
 
     function changeSlide(slider, dir) {
