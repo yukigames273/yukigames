@@ -279,6 +279,55 @@ footer {
   border-top: 1px solid #6a1b9a;
 }
 
+/* Loading VIP xoay */
+.loading {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0f0f1a, #1e1e3a);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+.vip-spinner {
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+
+.inner-spinner {
+  width: 100%;
+  height: 100%;
+  border: 8px solid #2a1e4a;
+  border-top: 8px solid #9d4edd;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite, pulse 2s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(157, 78, 221, 0.4); }
+  50% { box-shadow: 0 0 0 20px rgba(157, 78, 221, 0); }
+}
+
+.loading-text {
+  margin-top: 25px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #9d4edd, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(157, 78, 221, 0.6);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .logo {
