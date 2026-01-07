@@ -10,59 +10,39 @@ body {
   background: #0f0f1a;
   color: #e0e0e0;
   min-height: 100vh;
+  line-height: 1.5;
 }
 
 .header {
-  background: #1e1e3a;
+  background: linear-gradient(to right, #1e1e3a, #2a1e4a); /* Tím gradient */
   padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 10px rgba(138, 43, 226, 0.3); /* Glow tím */
 }
 
 .logo {
   font-size: 1.6rem;
   font-weight: bold;
-  color: #00d4ff;
-}
-
-.search-wrapper {
-  position: relative;
-}
-
-.search-toggle {
-  cursor: pointer;
-  font-size: 1.4rem;
-  color: #00d4ff;
-  padding: 8px;
+  color: #9d4edd; /* Tím xịn */
+  text-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
 }
 
 .search-container {
-  position: absolute;
-  right: 0;
-  top: 100%;
-  width: 0;
-  max-width: 85vw;
-  overflow: hidden;
-  transition: width 0.4s ease, opacity 0.4s ease;
-  background: #2a2a4a;
-  border-radius: 50px;
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
   display: flex;
   align-items: center;
-  padding: 0;
-  opacity: 0;
-}
-
-.search-container.active {
-  width: 85vw;
+  width: 60%;
+  max-width: 350px;
+  background: #2a1e4a;
+  border-radius: 50px;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
   padding: 8px 15px;
-  opacity: 1;
+  transition: all 0.3s;
 }
 
 .search-icon {
-  color: #00d4ff;
+  color: #9d4edd;
   font-size: 1.1rem;
   margin-right: 10px;
 }
@@ -76,11 +56,8 @@ body {
   outline: none;
 }
 
-.close-icon {
-  color: #bbb;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-left: 10px;
+#searchInput:focus {
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
 }
 
 .container {
@@ -103,27 +80,33 @@ body {
 
 .game-card {
   background: #16213e;
+  border: 1px solid #6a1b9a; /* Viền tím */
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  box-shadow: 0 8px 30px rgba(138, 43, 226, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.game-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(138, 43, 226, 0.4);
 }
 
 .slider {
   position: relative;
-  height: 220px; /* Nhỏ lại ảnh slider */
+  height: 220px;
   background: #000;
 }
 
 .slide {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Ảnh fit vừa khung, nhỏ hơn */
+  object-fit: cover;
   position: absolute;
   top: 0; left: 0;
   opacity: 0;
   transition: opacity 0.6s;
   display: none;
-  cursor: pointer;
 }
 
 .slide.active {
@@ -136,12 +119,12 @@ body {
   top: 50%;
   transform: translateY(-50%);
   background: rgba(0,0,0,0.7);
-  color: white;
+  color: #9d4edd;
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
-  font-size: 22px;
+  font-size: 24px;
   cursor: pointer;
   z-index: 10;
 }
@@ -150,43 +133,48 @@ body {
 .next { right: 10px; }
 
 .game-info {
-  padding: 20px;
+  padding: 25px;
   text-align: center;
 }
 
 h2 {
-  font-size: 1.6rem;
-  margin-bottom: 12px;
+  font-size: 1.7rem;
+  margin-bottom: 15px;
   color: #fff;
+  line-height: 1.2;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .version, .size, .update {
-  font-size: 0.9rem;
-  margin: 6px 0;
+  font-size: 0.95rem;
+  margin: 8px 0;
+  line-height: 1.4;
 }
 
-.version { color: #00d4ff; font-weight: bold; }
+.version { color: #9d4edd; font-weight: bold; }
 .size { color: #bbb; }
 .update { color: #90ff90; font-style: italic; }
 
 .download-btn {
   display: inline-block;
-  background: linear-gradient(135deg, #0099cc, #00d4ff);
+  background: linear-gradient(135deg, #6a1b9a, #9d4edd);
   color: white !important;
-  padding: 12px 35px;
+  padding: 14px 40px;
   border-radius: 50px;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1rem;
-  margin-top: 15px;
+  font-size: 1.1rem;
+  margin-top: 20px;
   transition: all 0.3s;
 }
 
 .download-btn:hover {
   transform: scale(1.05);
+  background: linear-gradient(135deg, #9d4edd, #c084fc);
 }
 
-/* Modal xem ảnh lớn */
 .modal {
   display: none;
   position: fixed;
@@ -202,7 +190,6 @@ h2 {
   max-height: 95vh;
   object-fit: contain;
   border-radius: 10px;
-  cursor: zoom-in;
 }
 
 .close-modal {
@@ -211,9 +198,7 @@ h2 {
   right: 30px;
   color: white;
   font-size: 40px;
-  font-weight: bold;
   cursor: pointer;
-  z-index: 10000;
 }
 
 footer {
@@ -221,5 +206,5 @@ footer {
   padding: 30px 20px;
   color: #777;
   font-size: 0.9rem;
-  border-top: 1px solid #222;
+  border-top: 1px solid #6a1b9a;
 }
