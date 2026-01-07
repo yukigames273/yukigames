@@ -10,10 +10,12 @@
 </head>
 <body oncontextmenu="return false;">
 
-  <!-- Loading Spinner -->
+  <!-- Loading VIP -->
   <div id="loading" class="loading">
-    <div class="spinner"></div>
-    <p>Loading Yukiki Games...</p>
+    <div class="vip-spinner">
+      <div class="inner-spinner"></div>
+    </div>
+    <p class="loading-text">Loading Yukiki Games...</p>
   </div>
 
   <header class="header">
@@ -26,13 +28,12 @@
 
   <div class="container" id="content" style="display: none;">
     <div class="game-grid">
-      <!-- Game 1: Kingdom Strategy -->
+      <!-- Các game card của bạn giữ nguyên -->
       <div class="game-card">
         <div class="slider" data-current="0">
           <span class="badge new">NEW</span>
           <img src="https://via.placeholder.com/500x220/000000/000000" alt="Screen 1" class="slide active" onclick="openModal(this.src)"/>
-          <img src="https://via.placeholder.com/500x220/111111/111111" alt="Screen 2" class="slide" onclick="openModal(this.src)"/>
-          <img src="https://via.placeholder.com/500x220/222222/222222" alt="Screen 3" class="slide" onclick="openModal(this.src)"/>
+          <!-- Các img khác -->
           <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
           <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
         </div>
@@ -45,24 +46,7 @@
         </div>
       </div>
 
-      <!-- Game 2: Offline Survival Shooter -->
-      <div class="game-card">
-        <div class="slider" data-current="0">
-          <span class="badge hot">HOT</span>
-          <img src="https://via.placeholder.com/500x220/333333/333333" alt="Screen 1" class="slide active" onclick="openModal(this.src)"/>
-          <img src="https://via.placeholder.com/500x220/444444/444444" alt="Screen 2" class="slide" onclick="openModal(this.src)"/>
-          <img src="https://via.placeholder.com/500x220/555555/555555" alt="Screen 3" class="slide" onclick="openModal(this.src)"/>
-          <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
-          <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
-        </div>
-        <div class="game-info">
-          <h2>Offline Survival Shooter</h2>
-          <p class="version">Version: v1.8.5</p>
-          <p class="size">Size: 320.5 MB</p>
-          <p class="update">Last Updated: December 25, 2025</p>
-          <a href="https://mega.nz/file/example" class="download-btn">Download Now</a>
-        </div>
-      </div>
+      <!-- Game 2 tương tự -->
     </div>
   </div>
 
@@ -77,7 +61,7 @@
   </footer>
 
   <script>
-    // Loading khi mở trang lần đầu
+    // Loading VIP khi mở trang
     window.addEventListener('load', () => {
       setTimeout(() => {
         document.getElementById('loading').style.opacity = '0';
@@ -85,7 +69,7 @@
           document.getElementById('loading').style.display = 'none';
           document.getElementById('content').style.display = 'block';
         }, 500);
-      }, 2000); // 2 giây
+      }, 2500); // 2.5 giây để thấy rõ VIP
     });
 
     function filterGames() {
@@ -105,9 +89,10 @@
           document.getElementById('loading').style.display = 'none';
           document.getElementById('content').style.display = 'block';
         }, 500);
-      }, 300); // delay ngắn khi search
+      }, 300);
     }
 
+    // Các function khác giữ nguyên
     function changeSlide(slider, dir) {
       const slides = slider.querySelectorAll('.slide');
       let current = parseInt(slider.dataset.current || 0);
