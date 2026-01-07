@@ -77,21 +77,38 @@
   </footer>
 
   <script>
-    // Ẩn loading sau khi load xong (2 giây demo)
+    // Loading khi mở trang lần đầu
     window.addEventListener('load', () => {
       setTimeout(() => {
-        document.getElementById('loading').style.display = 'none';
-        document.getElementById('content').style.display = 'block';
-      }, 2000); // 2 giây, bạn có thể chỉnh ngắn hơn
+        document.getElementById('loading').style.opacity = '0';
+        setTimeout(() => {
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('content').style.display = 'block';
+        }, 500); // fade out 0.5s
+      }, 2000); // loading 2 giây
     });
 
+    // Loading khi search/filter (gõ từ khóa)
+    let searchTimeout;
     function filterGames() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const cards = document.querySelectorAll('.game-card');
-      cards.forEach(card => {
-        const title = card.querySelector('h2').textContent.toLowerCase();
-        card.style.display = title.includes(input) ? 'block' : 'none';
-      });
+      document.getElementById('loading').style.display = 'flex';
+      document.getElementById('content').style.display = 'none';
+
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const cards = document.querySelectorAll('.game-card');
+        cards.forEach(card => {
+          const title = card.querySelector('h2').textContent.toLowerCase();
+          card.style.display = title.includes(input) ? 'block' : 'none';
+        });
+
+        document.getElementById('loading').style.opacity = '0';
+        setTimeout(() => {
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('content').style.display = 'block';
+        }, 500);
+      }, 300); // delay 0.3s để loading hiện mượt
     }
 
     function changeSlide(slider, dir) {
