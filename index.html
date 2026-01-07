@@ -84,18 +84,15 @@
         setTimeout(() => {
           document.getElementById('loading').style.display = 'none';
           document.getElementById('content').style.display = 'block';
-        }, 500); // fade out 0.5s
-      }, 2000); // loading 2 giây
+        }, 500);
+      }, 2000); // 2 giây
     });
 
-    // Loading khi search/filter (gõ từ khóa)
-    let searchTimeout;
     function filterGames() {
       document.getElementById('loading').style.display = 'flex';
       document.getElementById('content').style.display = 'none';
 
-      clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(() => {
+      setTimeout(() => {
         const input = document.getElementById('searchInput').value.toLowerCase();
         const cards = document.querySelectorAll('.game-card');
         cards.forEach(card => {
@@ -108,7 +105,7 @@
           document.getElementById('loading').style.display = 'none';
           document.getElementById('content').style.display = 'block';
         }, 500);
-      }, 300); // delay 0.3s để loading hiện mượt
+      }, 300); // delay ngắn khi search
     }
 
     function changeSlide(slider, dir) {
