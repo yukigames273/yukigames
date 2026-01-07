@@ -20,20 +20,26 @@
 
   <header class="header">
     <div class="logo">Yukiki Games</div>
-    <div class="search-container">
-      <i class="fas fa-search search-icon"></i>
-      <input type="text" id="searchInput" placeholder="Search games..." onkeyup="filterGames()"/>
+    <div class="search-wrapper">
+      <div class="search-toggle" onclick="toggleSearch()">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="search-container" id="searchContainer">
+        <input type="text" id="searchInput" placeholder="Search games..." onkeyup="filterGames()"/>
+        <i class="fas fa-times close-icon" onclick="toggleSearch()"></i>
+      </div>
     </div>
   </header>
 
   <div class="container" id="content" style="display: none;">
     <div class="game-grid">
-      <!-- Các game card của bạn giữ nguyên -->
+      <!-- Game 1: Kingdom Strategy -->
       <div class="game-card">
         <div class="slider" data-current="0">
           <span class="badge new">NEW</span>
           <img src="https://via.placeholder.com/500x220/000000/000000" alt="Screen 1" class="slide active" onclick="openModal(this.src)"/>
-          <!-- Các img khác -->
+          <img src="https://via.placeholder.com/500x220/111111/111111" alt="Screen 2" class="slide" onclick="openModal(this.src)"/>
+          <img src="https://via.placeholder.com/500x220/222222/222222" alt="Screen 3" class="slide" onclick="openModal(this.src)"/>
           <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
           <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
         </div>
@@ -46,7 +52,24 @@
         </div>
       </div>
 
-      <!-- Game 2 tương tự -->
+      <!-- Game 2: Offline Survival Shooter -->
+      <div class="game-card">
+        <div class="slider" data-current="0">
+          <span class="badge hot">HOT</span>
+          <img src="https://via.placeholder.com/500x220/333333/333333" alt="Screen 1" class="slide active" onclick="openModal(this.src)"/>
+          <img src="https://via.placeholder.com/500x220/444444/444444" alt="Screen 2" class="slide" onclick="openModal(this.src)"/>
+          <img src="https://via.placeholder.com/500x220/555555/555555" alt="Screen 3" class="slide" onclick="openModal(this.src)"/>
+          <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
+          <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
+        </div>
+        <div class="game-info">
+          <h2>Offline Survival Shooter</h2>
+          <p class="version">Version: v1.8.5</p>
+          <p class="size">Size: 320.5 MB</p>
+          <p class="update">Last Updated: December 25, 2025</p>
+          <a href="https://mega.nz/file/example" class="download-btn">Download Now</a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -69,7 +92,18 @@
           document.getElementById('loading').style.display = 'none';
           document.getElementById('content').style.display = 'block';
         }, 500);
-      }, 2500); // 2.5 giây để thấy rõ VIP
+      }, 2500);
+    });
+
+    // Toggle search
+    function toggleSearch() {
+      document.getElementById('searchContainer').classList.toggle('active');
+    }
+
+    document.addEventListener('click', function(e) {
+      if (!document.querySelector('.search-wrapper').contains(e.target)) {
+        document.getElementById('searchContainer').classList.remove('active');
+      }
     });
 
     function filterGames() {
@@ -92,7 +126,6 @@
       }, 300);
     }
 
-    // Các function khác giữ nguyên
     function changeSlide(slider, dir) {
       const slides = slider.querySelectorAll('.slide');
       let current = parseInt(slider.dataset.current || 0);
