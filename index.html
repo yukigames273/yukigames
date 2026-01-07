@@ -3,60 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Yukiki Games - Free Downloads</title>
+  <title>Kingdom Strategy - Yukiki Games</title>
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body oncontextmenu="return false;">
 
   <header class="header">
     <div class="logo">Yukiki Games</div>
-    <div class="search-container">
-      <i class="fas fa-search search-icon"></i>
-      <input type="text" id="searchInput" placeholder="Search games..." onkeyup="filterGames()"/>
-    </div>
+    <a href="index.html" class="back-btn">← Back to Home</a>
   </header>
 
-  <div class="container">
-    <div class="game-grid">
-      <!-- Game 1: Kingdom Strategy - thêm badge New + link detail -->
-      <div class="game-card" onclick="window.location.href='game-detail.html?game=kingdom'">
-        <div class="slider" data-current="0">
-          <img src="https://via.placeholder.com/500x220/000000/000000" alt="Screen 1" class="slide active" onclick="openModal(this.src); event.stopPropagation();"/>
-          <img src="https://via.placeholder.com/500x220/111111/111111" alt="Screen 2" class="slide" onclick="openModal(this.src); event.stopPropagation();"/>
-          <img src="https://via.placeholder.com/500x220/222222/222222" alt="Screen 3" class="slide" onclick="openModal(this.src); event.stopPropagation();"/>
-          <button class="prev" onclick="changeSlide(this.parentElement, -1); event.stopPropagation();">‹</button>
-          <button class="next" onclick="changeSlide(this.parentElement, 1); event.stopPropagation();">›</button>
+  <div class="detail-container">
+    <div class="hero">
+      <img src="https://via.placeholder.com/1200x500/111/fff?text=Kingdom+Hero+Image" alt="Kingdom Strategy" class="hero-img"/>
+      <div class="hero-text">
+        <div class="title-wrapper">
+          <h1>Kingdom Strategy</h1>
+          <span class="badge new">New</span>
         </div>
-        <div class="game-info">
-          <h2>Kingdom Strategy</h2>
-          <span class="badge new">New</span> <!-- Badge New -->
-          <p class="version">Version: v2.1.0</p>
-          <p class="size">Size: 480.0 MB</p>
-          <p class="update">Last Updated: December 26, 2025</p>
-          <a href="https://your-link.apk" class="download-btn" onclick="event.stopPropagation();">Download Now</a>
-        </div>
+        <p class="tag">Strategy • Offline • MOD Menu</p>
       </div>
+    </div>
 
-      <!-- Game 2: Offline Survival Shooter - thêm badge Hot + link detail -->
-      <div class="game-card" onclick="window.location.href='game-detail.html?game=survival'">
-        <div class="slider" data-current="0">
-          <img src="https://via.placeholder.com/500x220/333333/333333" alt="Screen 1" class="slide active" onclick="openModal(this.src); event.stopPropagation();"/>
-          <img src="https://via.placeholder.com/500x220/444444/444444" alt="Screen 2" class="slide" onclick="openModal(this.src); event.stopPropagation();"/>
-          <img src="https://via.placeholder.com/500x220/555555/555555" alt="Screen 3" class="slide" onclick="openModal(this.src); event.stopPropagation();"/>
-          <button class="prev" onclick="changeSlide(this.parentElement, -1); event.stopPropagation();">‹</button>
-          <button class="next" onclick="changeSlide(this.parentElement, 1); event.stopPropagation();">›</button>
+    <div class="content">
+      <section class="description">
+        <h2>Description</h2>
+        <p>Kingdom Strategy is an epic offline strategy game where you build your kingdom, defend against enemies, and conquer lands. With MOD Menu, you can unlock unlimited resources, god mode, and more features for endless fun!</p>
+        <p>Features:</p>
+        <ul>
+          <li>Beautiful 2D graphics and smooth animations</li>
+          <li>Completely offline - play anywhere without internet</li>
+          <li>MOD Menu with powerful cheats (unlimited gold, gems, instant build)</li>
+          <li>Challenging levels, upgrades, and epic boss fights</li>
+        </ul>
+      </section>
+
+      <section class="gallery">
+        <h2>Screenshots</h2>
+        <div class="gallery-grid">
+          <img src="https://via.placeholder.com/400x300/111/fff?text=Screen+1" alt="Screen 1" onclick="openModal(this.src)"/>
+          <img src="https://via.placeholder.com/400x300/222/fff?text=Screen+2" alt="Screen 2" onclick="openModal(this.src)"/>
+          <img src="https://via.placeholder.com/400x300/333/fff?text=Screen+3" alt="Screen 3" onclick="openModal(this.src)"/>
         </div>
-        <div class="game-info">
-          <h2>Offline Survival Shooter</h2>
-          <span class="badge hot">Hot</span> <!-- Badge Hot -->
-          <p class="version">Version: v1.8.5</p>
-          <p class="size">Size: 320.5 MB</p>
-          <p class="update">Last Updated: December 25, 2025</p>
-          <a href="https://mega.nz/file/example" class="download-btn" onclick="event.stopPropagation();">Download Now</a>
+      </section>
+
+      <section class="trailer">
+        <h2>Trailer</h2>
+        <div class="video-wrapper">
+          <iframe width="100%" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Trailer" frameborder="0" allowfullscreen></iframe>
         </div>
-      </div>
+      </section>
+
+      <section class="versions">
+        <h2>Version History</h2>
+        <ul>
+          <li><strong>v2.1.0</strong> (Dec 26, 2025): New levels, bug fixes, improved MOD Menu.</li>
+          <li><strong>v2.0.0</strong> (Nov 15, 2025): MOD Menu v2 with new cheats.</li>
+          <li><strong>v1.0.0</strong> (Oct 01, 2025): Initial release.</li>
+        </ul>
+      </section>
+
+      <a href="https://your-link.apk" class="download-btn large">Download Now (v2.1.0)</a>
     </div>
   </div>
 
@@ -71,25 +79,6 @@
   </footer>
 
   <script>
-    function filterGames() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const cards = document.querySelectorAll('.game-card');
-      cards.forEach(card => {
-        const title = card.querySelector('h2').textContent.toLowerCase();
-        card.style.display = title.includes(input) ? 'block' : 'none';
-      });
-    }
-
-    function changeSlide(slider, dir) {
-      const slides = slider.querySelectorAll('.slide');
-      let current = parseInt(slider.dataset.current || 0);
-      slides[current].classList.remove('active');
-      current = (current + dir + slides.length) % slides.length;
-      if (current < 0) current += slides.length;
-      slides[current].classList.add('active');
-      slider.dataset.current = current;
-    }
-
     function openModal(src) {
       document.getElementById('modalImage').src = src;
       document.getElementById('imageModal').style.display = "flex";
