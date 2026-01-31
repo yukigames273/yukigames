@@ -1,165 +1,822 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Yuki Games - Download H game</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robux Donation System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00D9FF;
+            --secondary: #7C3AED;
+            --dark: #0A0E27;
+            --darker: #050810;
+            --light: #E8EAED;
+            --accent: #FFC700;
+            --success: #10B981;
+            --danger: #EF4444;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 15% 20%, rgba(0, 217, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .grid-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 217, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 217, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0 40px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5em;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.7;
+            font-weight: 300;
+            margin-top: 10px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:hover {
+            border-color: rgba(0, 217, 255, 0.2);
+            box-shadow: 0 15px 50px rgba(0, 217, 255, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+        }
+
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6em;
+            font-weight: 700;
+            color: var(--light);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--light);
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1em;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .gamepass-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .gamepass-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gamepass-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gamepass-item:hover::before {
+            opacity: 1;
+        }
+
+        .gamepass-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 217, 255, 0.3);
+        }
+
+        .gamepass-item.selected {
+            border-color: var(--accent);
+            background: rgba(255, 199, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(255, 199, 0, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(255, 199, 0, 0.6);
+            }
+        }
+
+        .gamepass-amount {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2em;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .gamepass-label {
+            font-size: 0.85em;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .history-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .history-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .history-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .history-list::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        .history-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .history-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateX(5px);
+        }
+
+        .history-donor {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .history-amount {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4em;
+            color: var(--success);
+            margin: 8px 0;
+        }
+
+        .history-time {
+            font-size: 0.85em;
+            opacity: 0.6;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5em;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.6;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            opacity: 0.5;
+        }
+
+        .empty-state-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+        }
+
+        .notification {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--success), var(--primary));
+            color: white;
+            padding: 18px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transform: translateX(500px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            font-weight: 600;
+            max-width: 400px;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.error {
+            background: linear-gradient(135deg, var(--danger), #DC2626);
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gamepass-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .verify-section {
+            background: rgba(255, 199, 0, 0.1);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .verify-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2em;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .verify-btn {
+            background: linear-gradient(135deg, var(--accent), #FFD700);
+            color: var(--dark);
+        }
+    </style>
 </head>
-<body oncontextmenu="return false;">
+<body>
+    <div class="grid-background"></div>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">💎</div>
+            </div>
+            <h1>ROBUX DONATIONS</h1>
+            <p class="subtitle">Please support me so I can make more videos.🩷</p>
+        </header>
 
-  <header class="header">
-    <div class="logo">Yuki Games</div>
-    <div class="search-wrapper">
-      <div class="search-toggle" onclick="toggleSearch()">
-        <i class="fas fa-search"></i>
-      </div>
-      <div class="search-container" id="searchContainer">
-        <input type="text" id="searchInput" placeholder="Search games..." onkeyup="filterGames()"/>
-        <i class="fas fa-times close-icon" onclick="toggleSearch()"></i>
-      </div>
+        <div class="main-content">
+            <!-- Left Column - Donate -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🎁</div>
+                    <h2 class="card-title">Choose Donation Amount</h2>
+                </div>
+
+                <div class="gamepass-grid" id="donateGamepassGrid">
+                    <!-- Gamepasses will be loaded here -->
+                </div>
+
+                <div class="input-group" style="margin-top: 30px;">
+                    <label>Your Roblox Username</label>
+                    <input type="text" id="donorUsername" placeholder="Enter your username...">
+                </div>
+
+                <button onclick="purchaseGamepass()" style="margin-top: 20px;">
+                    🚀 Open Gamepass to Purchase
+                </button>
+
+                <div class="verify-section">
+                    <div class="verify-title">✅ Verify Your Purchase</div>
+                    <p style="font-size: 0.9em; opacity: 0.8; margin-bottom: 15px;">
+                        After purchasing the gamepass, click below to verify and add to donation history:
+                    </p>
+                    <button class="verify-btn" onclick="verifyPurchase()">
+                        Verify Purchase
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Column - History -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📊</div>
+                    <h2 class="card-title">Donation History</h2>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalDonated">0</div>
+                        <div class="stat-label">Total Robux</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalDonations">0</div>
+                        <div class="stat-label">Donations</div>
+                    </div>
+                </div>
+
+                <div class="history-list" id="historyList">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📭</div>
+                        <div>No donations yet</div>
+                    </div>
+                </div>
+
+                <button onclick="clearHistory()" style="margin-top: 20px; background: rgba(239, 68, 68, 0.3);">
+                    🗑️ Clear History
+                </button>
+            </div>
+        </div>
     </div>
-  </header>
 
-  <div class="container">
-    <div class="game-grid">
-    <!-- Game mới: Succubus Hunt Android -->
-<div class="game-card">
-  <div class="slider" data-current="0">
-    <span class="badge new">NEW</span> <!-- Hoặc HOT, Updated -->
-    <img src="https://files.catbox.moe/9fa7bk.jpg" alt="Screen 1" class="slide active" onclick="openModal(this.src)"/>
-    <img src="https://files.catbox.moe/h1sekz.jpg" alt="Screen 2" class="slide" onclick="openModal(this.src)"/>
-    <img src="https://files.catbox.moe/pl7yq7.jpg" alt="Screen 3" class="slide" onclick="openModal(this.src)"/>
-    <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
-    <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
-  </div>
-  <div class="game-info">
-    <h2>Succubus Hunt Android Apk</h2>
-    <p class="version">Version: v1.5.2</p>
-    <p class="size">Size: 187.72 MB</p>
-    <p class="update">Last Updated: January 12, 2026</p>
-    <a href="https://ouo.io/G2snGRw" class="download-btn">Download Now</a>
-  </div>
-</div>
-    
-    <!-- Game mới: Ripples v0.8.0 -->
-<div class="game-card">
-  <div class="slider" data-current="0">
-    <span class="badge new">NEW</span> <!-- Hoặc HOT, Updated -->
-    <img src="https://files.catbox.moe/ychkpw.jpg" alt="Screen 1" class="slide active" onclick="openModal(this.src)"/>
-    <img src="https://files.catbox.moe/4h2afi.avif" alt="Screen 2" class="slide" onclick="openModal(this.src)"/>
-    <img src="https://files.catbox.moe/9681kl.jpg" alt="Screen 3" class="slide" onclick="openModal(this.src)"/>
-    <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
-    <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
-  </div>
-  <div class="game-info">
-    <h2>Ripples Android Apk</h2>
-    <p class="version">Version: v0.8.0</p>
-    <p class="size">Size: 2.46 GB</p>
-    <p class="update">Last Updated: January 10, 2026</p>
-    <a href="https://ouo.io/BhOVzVz" class="download-btn">Download Now</a>
-  </div>
-</div>
-    
-    <!-- Game mới: Stop Master the time Freeze Visitor -->
-<div class="game-card">
-  <div class="slider" data-current="0">
-    <span class="badge new"></span> <!-- Hoặc HOT, Updated -->
-    <img src="https://files.catbox.moe/vmm1tw.png" alt="Screen 1" class="slide active" onclick="openModal(this.src)"/>
-    <img src="https://files.catbox.moe/r6nrqe.png" alt="Screen 2" class="slide" onclick="openModal(this.src)"/>
-    <img src="https://files.catbox.moe/gtt0r5.png" alt="Screen 3" class="slide" onclick="openModal(this.src)"/>
-    <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
-    <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
-  </div>
-  <div class="game-info">
-    <h2>Stop Master the time Freeze Visitor Android Apk</h2>
-    <p class="version">Version: v0.8</p>
-    <p class="size">Size: 1.0 GB</p>
-    <p class="update">Last Updated: January 08, 2026</p>
-    <a href="https://ouo.io/G2lbwH4" class="download-btn">Download Now</a>
-  </div>
-</div>
-    
-      <!-- Game mới: The Demon On the Train -->
-<div class="game-card">
-  <div class="slider" data-current="0">
-    <span class="badge new"></span> <!-- Hoặc HOT, Updated -->
-    <img src="https://files.catbox.moe/lasy9e.jpg" alt="Screen 1" class="slide active" onclick="openModal(this.src)"/>
-    <img src="https://files.catbox.moe/muw0ew.jpg" alt="Screen 2" class="slide" onclick="openModal(this.src)"/>
-    <img src="https://files.catbox.moe/zjwpyj.jpg" alt="Screen 3" class="slide" onclick="openModal(this.src)"/>
-    <button class="prev" onclick="changeSlide(this.parentElement, -1)">‹</button>
-    <button class="next" onclick="changeSlide(this.parentElement, 1)">›</button>
-  </div>
-  <div class="game-info">
-    <h2>The Demon On the Train</h2>
-    <p class="version">Version: v1.0.9</p>
-    <p class="size">Size: 4.49 GB</p>
-    <p class="update">Last Updated: January 07, 2026</p>
-    <a href="https://ouo.io/sKV7Mz" class="download-btn">Download Now</a>
-  </div>
-</div>
+    <div class="notification" id="notification"></div>
 
-    </div>
-  </div>
+    <script>
+        // ============================================
+        // 🔧 THÊM GAMEPASS CỦA BẠN VÀO ĐÂY
+        // ============================================
+        // Cách thêm gamepass:
+        // 1. Copy dòng dưới đây: { amount: 10, gamepassId: "123456789" },
+        // 2. Thay đổi số Robux (amount) và ID gamepass (gamepassId)
+        // 3. Paste vào mảng gamepasses bên dưới
+        //
+        // Ví dụ:
+        // { amount: 5, gamepassId: "111111111" },
+        // { amount: 10, gamepassId: "222222222" },
+        // { amount: 50, gamepassId: "333333333" },
+        
+        const gamepasses = [
+            // Thêm gamepasses của bạn ở đây ↓
+            { amount: 5, gamepassId: "1584097695" },
+            { amount: 10, gamepassId: "1683029227" },
+            { amount: 50, gamepassId: "1694626641" },
+            { amount: 100, gamepassId: "1592253935" },
+            
+            
+            // Thêm nhiều hơn nếu cần ↑
+        ];
 
-  <!-- Modal xem ảnh lớn -->
-  <div id="imageModal" class="modal" onclick="closeModal()">
-    <span class="close-modal" onclick="closeModal()">×</span>
-    <img class="modal-content" id="modalImage" onclick="event.stopPropagation()">
-  </div>
+        // ============================================
+        // ⚠️ KHÔNG SỬA CODE BẾN DƯỚI NẾU BẠN KHÔNG BIẾT
+        // ============================================
 
-  <footer>
-    <p>© 2026 Yuki Games - All rights reserved</p>
-  </footer>
+        let selectedGamepass = null;
+        let donationHistory = [];
+        let totalDonated = 0;
+        let totalDonations = 0;
+        let pendingDonation = null;
 
-  <script>
-    function toggleSearch() {
-      document.getElementById('searchContainer').classList.toggle('active');
-    }
+        // Load data from localStorage
+        function loadData() {
+            const savedHistory = localStorage.getItem('robuxDonateHistory');
+            
+            if (savedHistory) {
+                const data = JSON.parse(savedHistory);
+                donationHistory = data.history || [];
+                totalDonated = data.totalDonated || 0;
+                totalDonations = data.totalDonations || 0;
+            }
+            
+            updateDonateGrid();
+            updateHistory();
+            updateStats();
+        }
 
-    document.addEventListener('click', function(e) {
-      if (!document.querySelector('.search-wrapper').contains(e.target)) {
-        document.getElementById('searchContainer').classList.remove('active');
-      }
-    });
+        function saveHistory() {
+            const data = {
+                history: donationHistory,
+                totalDonated: totalDonated,
+                totalDonations: totalDonations
+            };
+            localStorage.setItem('robuxDonateHistory', JSON.stringify(data));
+        }
 
-    function filterGames() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const cards = document.querySelectorAll('.game-card');
-      cards.forEach(card => {
-        const title = card.querySelector('h2').textContent.toLowerCase();
-        card.style.display = title.includes(input) ? 'block' : 'none';
-      });
-    }
+        function updateDonateGrid() {
+            const grid = document.getElementById('donateGamepassGrid');
+            
+            const sortedGamepasses = [...gamepasses].sort((a, b) => a.amount - b.amount);
 
-    function changeSlide(slider, dir) {
-      const slides = slider.querySelectorAll('.slide');
-      let current = parseInt(slider.dataset.current || 0);
-      slides[current].classList.remove('active');
-      current = (current + dir + slides.length) % slides.length;
-      if (current < 0) current += slides.length;
-      slides[current].classList.add('active');
-      slider.dataset.current = current;
-    }
+            grid.innerHTML = sortedGamepasses.map(gp => `
+                <div class="gamepass-item ${selectedGamepass?.amount === gp.amount ? 'selected' : ''}" 
+                     onclick='selectGamepass(${JSON.stringify(gp).replace(/'/g, "&apos;")})'>
+                    <div class="gamepass-amount">${gp.amount}R$</div>
+                    <div class="gamepass-label">${getLabelForAmount(gp.amount)}</div>
+                </div>
+            `).join('');
+        }
 
-    function openModal(src) {
-      document.getElementById('modalImage').src = src;
-      document.getElementById('imageModal').style.display = "flex";
-    }
+        function getLabelForAmount(amount) {
+            if (amount < 20) return 'Starter';
+            if (amount < 100) return 'Bronze';
+            if (amount < 500) return 'Silver';
+            if (amount < 1000) return 'Gold';
+            if (amount < 5000) return 'Diamond';
+            return 'Legend';
+        }
 
-    function closeModal() {
-      document.getElementById('imageModal').style.display = "none";
-    }
+        function selectGamepass(gamepass) {
+            selectedGamepass = gamepass;
+            updateDonateGrid();
+        }
 
-    document.querySelectorAll('img').forEach(img => {
-      img.addEventListener('contextmenu', e => e.preventDefault());
-      img.addEventListener('dragstart', e => e.preventDefault());
-    });
+        function purchaseGamepass() {
+            if (!selectedGamepass) {
+                showNotification('⚠️ Please select a donation amount!', 'error');
+                return;
+            }
 
-    document.addEventListener('copy', e => e.preventDefault());
-    document.addEventListener('contextmenu', e => e.preventDefault());
-  </script>
+            const username = document.getElementById('donorUsername').value.trim();
+            if (!username) {
+                showNotification('⚠️ Please enter your Roblox username!', 'error');
+                return;
+            }
+
+            // Store pending donation
+            pendingDonation = {
+                username: username,
+                amount: selectedGamepass.amount,
+                gamepassId: selectedGamepass.gamepassId
+            };
+            localStorage.setItem('pendingDonation', JSON.stringify(pendingDonation));
+
+            // Open gamepass
+            const gamepassUrl = `https://www.roblox.com/game-pass/${selectedGamepass.gamepassId}`;
+            showNotification(`🎮 Opening gamepass for ${selectedGamepass.amount} Robux...`);
+            
+            setTimeout(() => {
+                window.open(gamepassUrl, '_blank');
+                showNotification('📱 Please complete the purchase on Roblox, then click "Verify Purchase"!');
+            }, 1000);
+        }
+
+        function verifyPurchase() {
+            const pending = localStorage.getItem('pendingDonation');
+            if (!pending) {
+                showNotification('⚠️ No pending purchase found! Please purchase a gamepass first.', 'error');
+                return;
+            }
+
+            const donation = JSON.parse(pending);
+            
+            const confirmed = confirm(`Did you successfully purchase the ${donation.amount} Robux gamepass?`);
+            
+            if (confirmed) {
+                // Add to history
+                const historyItem = {
+                    donor: donation.username,
+                    amount: donation.amount,
+                    timestamp: new Date().toLocaleString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    }),
+                    verified: true
+                };
+                
+                donationHistory.unshift(historyItem);
+                totalDonated += donation.amount;
+                totalDonations += 1;
+
+                updateHistory();
+                updateStats();
+                saveHistory();
+
+                // Clear pending
+                localStorage.removeItem('pendingDonation');
+                pendingDonation = null;
+
+                // Reset form
+                selectedGamepass = null;
+                document.getElementById('donorUsername').value = '';
+                updateDonateGrid();
+
+                showNotification('✅ Thank you for your donation! 💝');
+            } else {
+                showNotification('Please complete the purchase and try again.', 'error');
+            }
+        }
+
+        function updateHistory() {
+            const historyList = document.getElementById('historyList');
+            
+            if (donationHistory.length === 0) {
+                historyList.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📭</div>
+                        <div>No donations yet</div>
+                    </div>
+                `;
+                return;
+            }
+
+            historyList.innerHTML = donationHistory.map(donation => `
+                <div class="history-item">
+                    <div class="history-donor">👤 ${donation.donor}</div>
+                    <div class="history-amount">💎 ${donation.amount.toLocaleString()} Robux</div>
+                    <div class="history-time">⏰ ${donation.timestamp}</div>
+                </div>
+            `).join('');
+        }
+
+        function updateStats() {
+            document.getElementById('totalDonated').textContent = totalDonated.toLocaleString();
+            document.getElementById('totalDonations').textContent = totalDonations;
+        }
+
+        function clearHistory() {
+            if (confirm('Are you sure you want to clear all donation history?')) {
+                donationHistory = [];
+                totalDonated = 0;
+                totalDonations = 0;
+                saveHistory();
+                updateHistory();
+                updateStats();
+                showNotification('🗑️ History cleared!');
+            }
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = 'notification';
+            if (type === 'error') {
+                notification.classList.add('error');
+            }
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 4000);
+        }
+
+        // Check for pending donation on page load
+        window.addEventListener('load', () => {
+            const pending = localStorage.getItem('pendingDonation');
+            if (pending) {
+                showNotification('⚠️ You have a pending donation! Click "Verify Purchase" if you completed it.');
+            }
+        });
+
+        // Load data on page load
+        loadData();
+    </script>
 </body>
 </html>
